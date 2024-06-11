@@ -4,11 +4,18 @@ import { Request, Response, Router } from "express";
 export async function listStudent(req: Request, res: Response) {
   //conecta com o banco
   const client = await pool.connect();
-  //realiza consulta sql
+  try {
+//realiza consulta sql
   const students = await client.query(`select * from students`)
-  //retorna consulta em formato json
+//retorna consulta em formato json
   return res.status(200).json(students.rows);
-}
+  }catch(error){
+    console.log (error)
+  }finally{
+    client.release
+  }
+  
+  
 export async function saveStudent(req: Request, res: Response) {
   const student  = req.body;
   console.log(student)
