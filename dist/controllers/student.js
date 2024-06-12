@@ -9,15 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.saveCourse = exports.listCourse = exports.deleteCourse = void 0;
+exports.saveStudent = exports.listStudent = exports.deleteStudent = void 0;
 const database_1 = require("../shared/database");
-function deleteCourse(req, res) {
+function deleteStudent(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         //conecta com o banco
         const client = yield database_1.pool.connect();
         const id = req.params.id;
         try {
-            const response = yield client.query(`delete from courses where id=${id}`);
+            const response = yield client.query(`delete from students where id=${id}`);
             res.status(200).json({ message: "Registro Excluido" });
         }
         catch (error) {
@@ -28,16 +28,16 @@ function deleteCourse(req, res) {
         }
     });
 }
-exports.deleteCourse = deleteCourse;
-function listCourse(req, res) {
+exports.deleteStudent = deleteStudent;
+function listStudent(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         //conecta com o banco
         const client = yield database_1.pool.connect();
-        //realiza consulta sql
         try {
-            const courses = yield client.query(`select * from courses`);
+            //realiza consulta sql
+            const students = yield client.query(`select * from students`);
             //retorna consulta em formato json
-            return res.status(200).json(courses.rows);
+            return res.status(200).json(students.rows);
         }
         catch (error) {
             console.log(error);
@@ -47,16 +47,17 @@ function listCourse(req, res) {
         }
     });
 }
-exports.listCourse = listCourse;
-function saveCourse(req, res) {
+exports.listStudent = listStudent;
+function saveStudent(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const course = req.body;
-        console.log(course);
+        const student = req.body;
+        console.log(student);
         const client = yield database_1.pool.connect();
         //realiza consulta sql
         try {
-            const response = yield client.query(`INSERT INTO courses (name) VALUES ('${course.name}')`);
-            res.status(200).json(course.rows);
+            const response = yield client.query(`INSERT INTO students (name, email) VALUES ('${student.name}', '${student.email}')`);
+            console.log(response.rows[0]);
+            res.status(201).json(response);
         }
         catch (error) {
             res.status(400).json({ message: 'Dados invalidos', error });
@@ -66,4 +67,4 @@ function saveCourse(req, res) {
         }
     });
 }
-exports.saveCourse = saveCourse;
+exports.saveStudent = saveStudent;
