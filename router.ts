@@ -10,7 +10,7 @@ router.delete("/courses/:id", deleteCourse);
 
 router.get("/students", listStudent);
 router.post("/students", saveStudent);
-router.delete("/students/:id", deleteStudent)
+router.delete("/students/:id", deleteStudent);
 
 router.get("/students", listTeacher);
 router.post("/students", saveTeacher);

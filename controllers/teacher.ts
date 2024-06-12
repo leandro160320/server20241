@@ -17,9 +17,9 @@ export async function deleteTeacher(req: Request, res: Response) {
 export async function listTeacher(req: Request, res: Response) {
   //conecta com o banco
   const client = await pool.connect();
+  //realiza consulta sql
   try {
-    //realiza consulta sql
-    const students = await client.query(`select * from teachers`)
+    const teachers = await client.query(`select * from teachers`)
     //retorna consulta em formato json
     return res.status(200).json(teachers.rows);
   } catch (error) {
@@ -27,22 +27,24 @@ export async function listTeacher(req: Request, res: Response) {
   } finally {
     client.release
   }
+
 }
-
 export async function saveTeacher(req: Request, res: Response) {
-  const student = req.body;
-  console.log(teachers)
-
+  const teacher = req.body;
+  console.log(teacher)
   const client = await pool.connect();
   //realiza consulta sql
   try {
-    const response = await client.query(`INSERT INTO students (name, email) VALUES ('${teacher.name}', '${teacher.email}')`)
-    console.log(response.rows[0]);
-    res.status(201).json(response);
+    const response = await client.query(`INSERT INTO teachers (name) VALUES ('${teacher.name}')`)
+    res.status(200).json(teacher.rows)
   } catch (error) {
     res.status(400).json({ message: 'Dados invalidos', error });
   } finally {
     client.release()
   }
 
+  
 }
+
+
+
