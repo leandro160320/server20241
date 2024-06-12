@@ -13,7 +13,7 @@ export async function deleteStudent(req: Request, res: Response) {
   }finally {
     client.release
   }
-
+}
 export async function listStudent(req: Request, res: Response) {
   //conecta com o banco
   const client = await pool.connect();
