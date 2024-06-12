@@ -1,6 +1,10 @@
 import { pool } from "../shared/database";
 import { Request, Response, Router } from "express";
 
+export async function deleteCourse(req: Request, res: Response) {
+}
+
+
 export async function listCourse(req: Request, res: Response) {
   //conecta com o banco
   const client = await pool.connect();
