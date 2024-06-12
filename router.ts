@@ -12,8 +12,8 @@ router.get("/students", listStudent);
 router.post("/students", saveStudent);
 router.delete("/students/:id", deleteStudent);
 
-router.get("/students", listTeacher);
-router.post("/students", saveTeacher);
-router.delete("/students/:id", deleteTeacher)
+router.get("/teachers", listTeacher);
+router.post("/teachers", saveTeacher);
+router.delete("/teachers/:id", deleteTeacher)
 
 export { router };
