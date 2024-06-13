@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { listCourse, saveCourse, deleteCourse, listSubject } from "./controllers/course";
-import { listStudent, saveStudent, deleteStudent, saveSubject } from "./controllers/student";
-import { listTeacher, saveTeacher, deleteTeacher,deleteSubjec } from "./controllers/teacher";
+import { listCourse, saveCourse, deleteCourse } from "./controllers/course";
+import { listStudent, saveStudent, deleteStudent } from "./controllers/student";
+import { listTeacher, saveTeacher, deleteTeacher } from "./controllers/teacher";
+import { listSubject, saveSubject, deleteSubject } from "./controllers/teacher";
 const router = Router();
 
 router.get("/courses", listCourse);
@@ -18,6 +19,6 @@ router.delete("/teachers/:id", deleteTeacher)
 
 router.get("/teachers", listSubject);
 router.post("/teachers", saveSubject);
-router.delete("/teachers/:id", deleteSubjec)
+router.delete("/teachers/:id", deleteSubject)
 
 export { router };

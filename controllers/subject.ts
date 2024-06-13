@@ -29,7 +29,7 @@ export async function listSubject(req: Request, res: Response) {
   }
 
 }
-export async function saveSubjects(req: Request, res: Response) {
+export async function saveSubject(req: Request, res: Response) {
   const subject = req.body;
   console.log(subject)
   const client = await pool.connect();
