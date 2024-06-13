@@ -6,7 +6,7 @@ export async function deleteTeacher(req: Request, res: Response) {
   const client = await pool.connect();
   const id = req.params.id
   try {
-    const response = await client.query(`delete from students where id=${id}`);
+    const response = await client.query(`delete from teachers where id=${id}`);
     res.status(200).json({ message: "Registro Excluido"})
   } catch (error) {
     res.status(404).json({message:error})
