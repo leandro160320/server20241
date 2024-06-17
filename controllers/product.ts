@@ -35,7 +35,7 @@ export async function saveProduct(req: Request, res: Response) {
   const client = await pool.connect();
   //realiza consulta sql
   try {
-    const response = await client.query(`INSERT INTO products (name) VALUES ('${product.name}')`)
+    const response = await client.query(`INSERT INTO products (name, description) VALUES ('${product.name}', '${product.description}')`)
     res.status(200).json(product.rows)
   } catch (error) {
     res.status(400).json({ message: 'Dados invalidos', error });
