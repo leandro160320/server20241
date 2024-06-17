@@ -30,8 +30,8 @@ export async function listProduct(req: Request, res: Response) {
 
 }
 export async function saveProduct(req: Request, res: Response) {
-  const Product = req.body;
-  console.log(Product)
+  const product = req.body;
+  console.log(product)
   const client = await pool.connect();
   //realiza consulta sql
   try {
