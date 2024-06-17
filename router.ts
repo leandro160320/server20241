@@ -3,6 +3,7 @@ import { listCourse, saveCourse, deleteCourse } from "./controllers/course";
 import { listStudent, saveStudent, deleteStudent } from "./controllers/student";
 import { listTeacher, saveTeacher, deleteTeacher } from "./controllers/teacher";
 import { listSubject, saveSubject, deleteSubject } from "./controllers/subject";
+import { listProduct, saveProduct, deleteProduct } from "./controllers/product";
 const router = Router();
 
 router.get("/courses", listCourse);
@@ -20,5 +21,9 @@ router.delete("/teachers/:id", deleteTeacher)
 router.get("/subjects", listSubject);
 router.post("/subjects", saveSubject);
 router.delete("/subjects/:id", deleteSubject)
+
+router.get("/products", listProduct);
+router.post("/products", saveProduct);
+router.delete("/products/:id", deleteProduct)
 
 export { router };
