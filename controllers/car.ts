@@ -35,7 +35,7 @@ export async function saveCar(req: Request, res: Response) {
   const client = await pool.connect();
   //realiza consulta sql
   try {
-    const response = await client.query(`INSERT INTO cars (name, description) VALUES ('${car.model}', '${car.description}')`)
+    const response = await client.query(`INSERT INTO cars (model, description) VALUES ('${car.model}', '${car.description}')`)
     res.status(200).json(car.rows)
   } catch (error) {
     res.status(400).json({ message: 'Dados invalidos', error });
