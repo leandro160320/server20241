@@ -4,6 +4,8 @@ import { listStudent, saveStudent, deleteStudent } from "./controllers/student";
 import { listTeacher, saveTeacher, deleteTeacher } from "./controllers/teacher";
 import { listSubject, saveSubject, deleteSubject } from "./controllers/subject";
 import { listProduct, saveProduct, deleteProduct } from "./controllers/product";
+import { listCar, saveCar, deleteCar } from "./controllers/car";
+import { listDriver, saveDriver, deleteDriver } from "./controllers/driver";
 const router = Router();
 
 router.get("/courses", listCourse);
@@ -25,5 +27,13 @@ router.delete("/subjects/:id", deleteSubject)
 router.get("/products", listProduct);
 router.post("/products", saveProduct);
 router.delete("/products/:id", deleteProduct)
+
+router.get("/cars", listCar);
+router.post("/cars", saveCar);
+router.delete("/cars/:id", deleteCar)
+
+router.get("/drivers", listDriver);
+router.post("/drivers", saveDriver);
+router.delete("/drivers/:id", deleteDriver)
 
 export { router };
